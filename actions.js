@@ -1,17 +1,21 @@
 
+// Change app343 with your APP ID
 var APP_ID = 'app343';
 
+// Function to post an AJAX request to our app
 soundcloud_post = function(obj) {
 
 	$('#soundcloud_form').find('.button').addClass('button_off').attr('disabled', true);
 	$('#soundcloud_form').find('.table_clear_ajax').show();
 
+	// POST to our app based on the APP_ID URL
 	Core.post(getParam('sJsHome') + 'index.php?do=/' + APP_ID + '/', $(obj).parents('form:first'), function() {
 		$('#soundcloud_form').find('.button').removeClass('button_off').attr('disabled', false);
 		$('#soundcloud_form').find('.table_clear_ajax').hide();
 	});
 };
 
+// Load routine when the document is ready
 Core.action.soundcloud = function() {
 
 	if ($('.activity_feed_form_share').length && !$('.soundcloud_link').length) {
