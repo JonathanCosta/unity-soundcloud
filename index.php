@@ -22,7 +22,7 @@ function _call($action, $params, $method = 'GET') {
 	$params = http_build_query($params);
 
 	$curl = curl_init();
-	curl_setopt($curl, CURLOPT_URL, MOXI9_API_URL . $action . '/' . ($method == 'GET' ? '&' . $params : ''));
+	curl_setopt($curl, CURLOPT_URL, 'https://api.moxi9.com/' . $action . '/' . ($method == 'GET' ? '&' . $params : ''));
 
 	if ($method == 'POST') {
 		curl_setopt($curl, CURLOPT_POST, true);

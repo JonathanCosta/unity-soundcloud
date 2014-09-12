@@ -1,0 +1,7 @@
+<?php
+
+define('MOXI9_APP_ID', '__ENTER_APP_ID__');
+define('MOXI9_PUBLIC_KEY', '__ENTER_PUBLIC_KEY__');
+define('MOXI9_PRIVATE_KEY', '__ENTER_PRIVATE_KEY__');
+
+?>
