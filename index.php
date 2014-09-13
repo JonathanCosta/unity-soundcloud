@@ -90,7 +90,7 @@ if (isset($json->post) && isset($json->post->val)) {
 			$data->html = str_replace(array('<iframe', '></iframe>'), array('[IFRAME', '][/IFRAME]'), $data->html);
 
 			// Add this post to the activity feed
-			$stream_id = _call('stream/add', array('user_id' => $json->user->id, 'type' => MOXI9_APP_ID, 'content' => $data->description, 'soundcloud' => (array) $data), 'POST');
+			$stream_id = _call('stream/add', array('user_id' => $json->user->id, 'type' => MOXI9_APP_ID, 'content' => (!empty($data->description) ? $data->description : '&nbsp;&nbsp;'), 'soundcloud' => (array) $data), 'POST');
 
 			// Get the feed from what we just added
 			$stream = _call('stream/get', array('user_id' => $json->user->id, 'id' => $stream_id));
@@ -132,6 +132,7 @@ if (isset($json->post) && isset($json->post->val)) {
 			// Add this to the activity feed
 			echo 'var soundcloud_html = ' . json_encode(array('html' => $new_feed)) . ';';
 			echo '$(\'#js_feed_content\').prepend(soundcloud_html.html);';
+			echo '$Core.resetActivityFeedForm();';
 			exit;
 		}
 
